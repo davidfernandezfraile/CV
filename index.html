@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - David Fernández Fraile</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #334155;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #93c5fd; }
+
+        .container {
+            max-width: 900px;
+            margin: 100px auto 40px;
+            padding: 0 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin: 0.3rem 0;
+        }
+
+        .contact-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-links a:hover { text-decoration: underline; }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-hover);
+            color: #ffffff;
+        }
+
+        .btn-download:active {
+            transform: scale(0.98);
+        }
+
+        .btn-download svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            scroll-margin-top: 80px;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .item { margin-bottom: 1.5rem; }
+        .item:last-child { margin-bottom: 0; }
+        
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .item-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .item-desc { margin: 0; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category p { margin: 0; color: var(--secondary-color); }
+
+        @media (max-width: 600px) {
+            .item-header { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .nav-container { flex-wrap: wrap; gap: 1rem; padding: 1rem; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#perfil">Perfil</a>
+            <a href="#educacion">Educación</a>
+            <a href="#proyectos">TFG</a>
+            <a href="#experiencia">Experiencia</a>
+            <a href="#habilidades">Habilidades</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <img src="foto.png" alt="David Fernández Fraile" class="profile-img">
+
+            <h1>David Fernández Fraile</h1>
+            <p>Estudiante de Doble Grado en Física y Matemáticas</p>
+            <div class="contact-links">
+                <a href="tel:+34657746262">+34 657 746 262</a> | 
+                <a href="mailto:fdezfraile.david@gmail.com">fdezfraile.david@gmail.com</a> | 
+                <a href="https://linkedin.com/in/david-fernandez-fraile" target="_blank">LinkedIn</a>
+            </div>
+            <a href="CV_David_Fernandez.pdf" download="CV_David_Fernandez_Fraile.pdf" class="btn-download">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                Descargar CV en PDF
+            </a>
+        </header>
+
+        <section id="perfil">
+            <h2>Perfil Profesional</h2>
+            <p>Perfil analítico con formación en Física y Matemáticas, impulsado por una profunda curiosidad intelectual, espíritu crítico y aprendizaje continuo. Proactivo y con alta capacidad de trabajo, tanto individual como en equipo. Busco trasladar herramientas matemáticas rigurosas a la toma de decisiones, con capacidad demostrada para aprender rápido en entornos exigentes.</p>
+        </section>
+
+        <section id="educacion">
+            <h2>Educación</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Doble Grado en Física y Matemáticas</span>
+                    <span class="item-date">Sep. 2022 – Jun. 2027</span>
+                </div>
+                <div class="item-subtitle">Universidad de Salamanca (USAL) — Salamanca, España</div>
+                <p class="item-desc">• Acceso por excelencia: Nota de admisión 13.640/14.00 (Programa restringido a 10 plazas anuales).</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Programa de Intercambio Académico Erasmus+</span>
+                    <span class="item-date">Sep. 2025 – Jul. 2026</span>
+                </div>
+                <div class="item-subtitle">Università degli Studi di Milano (UniMi) — Milán, Italia</div>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Bachillerato Científico-Tecnológico</span>
+                    <span class="item-date">Sep. 2020 – Jun. 2022</span>
+                </div>
+                <div class="item-subtitle">IES Astúrica Augusta — Astorga, León</div>
+                <p class="item-desc">• Matrícula de Honor. Nota media: 10.0/10.0.</p>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2>Proyectos Académicos</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Trabajo de Fin de Grado en Matemáticas</span>
+                    <span class="item-date">Sep. 2026 – Presente</span>
+                </div>
+                <div class="item-subtitle">Universidad de Salamanca — Modelización Estocástica y Cuantificación de Incertidumbre</div>
+                <p class="item-desc">Diseño de un modelo basado en cálculo estocástico (difusiones de Jacobi y ecuaciones diferenciales) para la cuantificación de incertidumbre, aplicando metodologías análogas al análisis de riesgo y predicción.</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Trabajo de Fin de Grado en Física</span>
+                    <span class="item-date">Sep. 2026 – Presente</span>
+                </div>
+                <div class="item-subtitle">Universidad de Salamanca — Astrofísica Teórica y Computacional</div>
+                <p class="item-desc">Resolución de la ecuación de Tolman mediante modelización numérica para acotar la relación presión-energía (ecuación de estado) en estrellas de neutrones a densidades supranucleares.</p>
+            </div>
+        </section>
+
+        <section id="experiencia">
+            <h2>Actividades y Experiencia Adicional</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Representante y Coordinador de Actividades</span>
+                    <span class="item-date">Sep. 2024 – Jun. 2025</span>
+                </div>
+                <div class="item-subtitle">Comisión de Eventos, Universidad de Salamanca</div>
+                <p class="item-desc">• Planificación y gestión logística de actividades para alumnos universitarios. Coordinación de equipos y negociación con proveedores externos, desarrollando habilidades de comunicación, gestión y resolución de imprevistos.</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Profesor de Apoyo en Matemáticas</span>
+                    <span class="item-date">Sep. 2023 – Jun. 2025</span>
+                </div>
+                <div class="item-subtitle">Clases Particulares — Salamanca, España</div>
+                <p class="item-desc">• Tutor particular de alumnos de Secundaria, fomentando su razonamiento lógico y autonomía a través del diseño de estrategias de aprendizaje adaptadas para explicar conceptos analíticos de forma intuitiva.</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Capitán del Equipo</span>
+                    <span class="item-date">Sep. 2012 – Mar. 2020</span>
+                </div>
+                <div class="item-subtitle">Capitán de un Club de Baloncesto Federado — Astorga (León), España</div>
+                <p class="item-desc">• Liderazgo en pista y gestión de la dinámica de grupo en competiciones oficiales. Fomento del trabajo en equipo, la deportividad, la constancia y la toma de decisiones ágiles bajo presión.</p>
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades Técnicas e Idiomas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Lenguajes de Programación</h3>
+                    <p>Python, SQL, R, C++, Fortran77, Wolfram Mathematica – Uso académico.</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Herramientas ofimáticas</h3>
+                    <p>Paquete de Microsoft (Excel, PowerPoint, Word) (Intermedio), LaTeX (Avanzado).</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Idiomas</h3>
+                    <p>Inglés (B2 certificado, EOI), Italiano (B1 certificado, UniMi), Francés (Intermedio), Español (Nativo).</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Hobbies</h3>
+                    <p>Viajar, descubrir experiencias nuevas, practicar deporte de manera regular y salir de la zona de confort.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
